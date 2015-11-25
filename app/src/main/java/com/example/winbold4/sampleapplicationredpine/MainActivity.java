@@ -1,13 +1,24 @@
 package com.example.winbold4.sampleapplicationredpine;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+
+import com.android.redpine.Redpine;
+
+import org.json.JSONObject;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +37,59 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        Button button = (Button)findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                //call a method when button clicked
+                //pleaseLogin();
+                new mySmallTask().execute();
+
+            }
+        });
+    }
+
+    public class mySmallTask extends AsyncTask<String, Void, JSONObject> {
+
+        Context context;
+        private mySmallTask(Context context) {
+            this.context = context.getApplicationContext();
+        }
+
+        private mySmallTask(){
+
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... params) {
+            // TODO Auto-generated method stub
+            //BaasBox baas = new BaasBox();
+            Redpine redpine = new Redpine();
+            //JSONObject jsonResponse = redpine.getVersion(params[0], params[1]);
+            //JSONObject jsonResponse = redpine.Login(params[0], params[1]);
+            JSONObject jsonResponse = redpine.getState();
+            return jsonResponse;
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject result) {
+            Log.i("Winbold", result.toString());
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle("Alert");
+            alertDialog.setMessage(result.toString());
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+        }
+
     }
 
     @Override
