@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SampleApplicationRedpine.iml" filepath="$PROJECT_DIR$/SampleApplicationRedpine.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/redpinelibrary/redpinelibrary.iml" filepath="$PROJECT_DIR$/redpinelibrary/redpinelibrary.iml" />
     </modules>
   </component>
 </project>
