@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.winbold4.sampleapplicationredpine.MainActivity">
+    tools:context="com.example.winbold4.sampleapplicationredpine.MainActivity"
+    >
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,7 +22,16 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <Button
+        android:id="@+id/button1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="62dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="Button" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
