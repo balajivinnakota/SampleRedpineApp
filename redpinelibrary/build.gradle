@@ -25,12 +25,12 @@ dependencies {
 }
 
 task deleteOldJar(type: Delete){
-    delete 'release/RedpineLibrary.jar'
+    delete 'build/libs/RedpineLibrary.jar'
 }
 
 task exportJar(type: Copy){
     from('build/intermediates/bundles/release/')
-    into('release/')
+    into('build/libs')
     include('Classes.jar')
     rename('Classes.jar', 'RedpineLibrary.jar')
 }

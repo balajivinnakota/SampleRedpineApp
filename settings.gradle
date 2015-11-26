@@ -1,1 +1,1 @@
-include ':app', ':redpinelibrary'
+include ':redpinelibrary',':app'
